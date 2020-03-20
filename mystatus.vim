@@ -12,10 +12,10 @@ function! ChangeColorScheme(colorscheme,mode) " {{{
 		elseif a:mode == 'i'
 			hi mystatuslinesep ctermfg=39 guifg=#5164C0
 			hi mystatusbody cterm=None ctermfg=39 ctermbg=59 guifg=#82b1ff guibg=#5164C0
-		elseif a:mode == 'v' || a:mode == 'V' || a:mode == '^V'
+		elseif a:mode == 'R'
 			hi mystatuslinesep ctermfg=173 guifg=#F78C6C 
 			hi mystatusbody cterm=None ctermfg=180 ctermbg=173 guifg=#ffcb6b guibg=#F78C6C
-		elseif a:mode == 'R'
+		elseif a:mode == 'v' || a:mode == 'V' || a:mode == '^V'
 			hi mystatuslinesep ctermfg=204 guifg=#ff5370 
 			hi mystatusbody cterm=None ctermfg=255 ctermbg=204 guifg=#eeeeee guibg=#ff5370
 		endif
