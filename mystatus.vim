@@ -42,6 +42,7 @@ set statusline+=%#mystatusbody#\ %.20f
 set statusline+=%#mystatusbody#\%{GetReadOnly()}
 set statusline+=%#mystatusbody#%m 
 set statusline+=%#mystatuslinesep#\ 
+set statusline+=%{StatuslineGit()}
 set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Right Side mystatusbody
 
