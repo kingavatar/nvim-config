@@ -25,7 +25,7 @@ function! MyTabline(mode)
 		let s .= (bufnum == bufnr() ? '%#mytablinesel#' : '%#mytabline#')
 		let s .= '' . bufnum . ' '
 		let s .= (bufname != '' ? fnamemodify(bufname, ':t') : '[No Name]')
-        let s .= ' ' . mpi#get(expand(bufname)) . ' ' 
+        let s .= ' ' . Getfiletypesymbol(expand(bufname)) . ' ' 
 		if bufmodified
             let s .= '[+]'
         endif

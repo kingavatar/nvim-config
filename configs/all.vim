@@ -135,27 +135,30 @@ if dein#tap('fzf.vim')
 	" let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 	
 	" function! FloatingFZF()
-	" let buf = nvim_create_buf(v:false, v:true)
-	" call setbufvar(buf, '&signcolumn', 'no')
-	
-	" let height = float2nr(10)
-	" let width = float2nr(80)
-	" let horizontal = float2nr((&columns - width) / 2)
-	" let vertical = 1
-	
-	" let opts = {
-	" 		\ 'relative': 'editor',
-	" 		\ 'row': vertical,
-	" 		\ 'col': horizontal,
-	" 		\ 'width': width,
-	" 		\ 'height': height,
-	" 		\ 'style': 'minimal'
-	" 		\ }
-	
-	" call nvim_open_win(buf, v:true, opts)
+	" 	let buf = nvim_create_buf(v:false, v:true)
+	" 	call setbufvar(buf, '&signcolumn', 'no')
+		
+	" 	let height = float2nr(10)
+	" 	let width = float2nr(80)
+	" 	let horizontal = float2nr((&columns - width) / 2)
+	" 	let vertical = 1
+		
+	" 	let opts = {
+	" 			\ 'relative': 'editor',
+	" 			\ 'row': vertical,
+	" 			\ 'col': horizontal,
+	" 			\ 'width': width,
+	" 			\ 'height': height,
+	" 			\ 'style': 'minimal'
+	" 			\ }
+		
+	" 	call nvim_open_win(buf, v:true, opts)
 	" endfunction
 	
 	" Files + devicons + floating fzf
+	
+	nnoremap <silent> <leader>e :call FzfFilePreview()<CR>
+	
 	function! FzfFilePreview()
 		let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {3..-1} | head -200" --expect=ctrl-v,ctrl-x'
 		let s:files_status = {}
@@ -211,7 +214,7 @@ if dein#tap('fzf.vim')
 			let l:result = []
 			for l:candidate in a:candidates
 			let l:filename = fnamemodify(l:candidate, ':p:t')
-			let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+			let l:icon = Getfiletypesymbol(l:filename)
 			call add(l:result, printf('%s %s', l:icon, l:candidate))
 			endfor
 
@@ -236,9 +239,10 @@ if dein#tap('fzf.vim')
 				\ 'source': <sid>files(),
 				\ 'sink*':   function('s:edit_file'),
 				\ 'options': '-m --preview-window=right:70%:noborder --prompt Files\> ' . l:fzf_files_options,
-				\ 'down':    '40%',
-				\ 'window': 'call FloatingFZF()'})
+				\ 'down':    '40%'})
+				" \ ,'window': 'call FloatingFZF()'})
 
 	endfunction
+
 
 endif

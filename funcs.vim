@@ -9,13 +9,22 @@ endfunction
 
 
 function! SetFiletype(filetype) " {{{
-  if a:filetype == ''
+  if isdirectory(expand('%:t'))
+  	  return ' ' . 'directory'
+  elseif a:filetype == ''
       return '-'
   else
-      return a:filetype
+      return mpi#get(a:filetype) . ' ' . a:filetype
   endif
 endfunction
 
+function! Getfiletypesymbol(filename)
+	if isdirectory(a:filename)
+		return ''
+	else
+		return mpi#get(a:filename)
+	endif
+endfunction
 function s:getDistro()
   if exists('s:distro')
     return s:distro

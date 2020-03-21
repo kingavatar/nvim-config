@@ -49,7 +49,7 @@ set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
 set statusline+=%=
 set statusline+=%#mystatuslinesep#
 "set statusline+=%#mystatusbody#%{WebDevIconsGetFileTypeSymbol()}\ 
-set statusline+=%#mystatusbody#%{mpi#get(expand('%:t'))}\ 
+" set statusline+=%#mystatusbody#%{mpi#get(expand('%:t'))}\ 
 set statusline+=%#mystatusbody#%{SetFiletype(&filetype)}
 set statusline+=%#mystatuslinesep#\ 
 set statusline+=%#mystatuslinesep#
