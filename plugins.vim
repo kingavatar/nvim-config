@@ -15,6 +15,7 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     call dein#begin('$HOME/.config/nvim/.cache/dein')
     " Startup Plugins
     call dein#add('$HOME/.config/nvim/.cache/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('wsdjeg/dein-ui.vim',{'on_cmd':'DeinUpdate'})
     call dein#add('roxma/nvim-yarp',{'if': ! has('nvim'), 'depends': 'vim-hug-neovim-rpc'})
     call dein#add('roxma/vim-hug-neovim-rpc',{ 'if': ! has('nvim')})
     call dein#add('romainl/vim-cool')
@@ -25,11 +26,13 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     call dein#add('drewtempelmeyer/palenight.vim')
     "call dein#add('itchyny/lightline.vim',{'merged': 0,'hook_source':'source $HOME/.config/nvim/configs/lightline.vim'})
     "call dein#add('ryanoasis/vim-devicons')
+
+    call dein#local("~/.config/nvim/plugin")
     call dein#add('justinmk/vim-gtfo')
     call dein#add('wellle/context.vim',{'merged':0})
     call dein#add('kien/rainbow_parentheses.vim', {'merged': 0})
     call dein#add('liuchengxu/vim-clap',{'merged':0,
-				\'build':':Clap install-binary!',
+				\'hook_post_update':':Clap install-binary!',
 			    \'hook_add': "let g:clap_theme = 'material_design_dark'\n
 			    \let g:clap_enable_icon = 1\n
 			    \let g:clap_search_box_border_style = 'curve'\n
