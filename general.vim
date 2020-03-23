@@ -16,7 +16,7 @@ set magic                    " For regular expressions turn magic on
 set virtualedit=block        " Position cursor anywhere in visual block
 set formatoptions+=1         " Don't break lines after a one-letter word
 set formatoptions-=t         " Don't auto-wrap text
-set autoread      " Set to auto read when a file is changed from the outside
+set autoread      			 " Set to auto read when a file is changed from the outside
 
 if has('patch-7.3.541')
 	set formatoptions+=j       " Remove comment leader when joining lines
@@ -86,9 +86,10 @@ highlight Comment cterm=italic
 set splitbelow              " Open new splits below
 set splitright              " Open new vertical splits to the right
 set hlsearch      			" highlight search terms
-set incsearch     " show search matches as you type
-set title         " change the terminal's title
-set ruler         " Always show current position
+set incsearch     			" show search matches as you type
+set inccommand=nosplit
+set title         			" change the terminal's title
+set ruler         			" Always show current position
 
 if has('persistent_undo')      "check if your neovim version supports it
   set undofile                 "turn on the feature

@@ -19,8 +19,9 @@ map <A-Right> <C-w>>
 map <A-Up> <C-w>+
 map <A-Down> <C-w>-
 
-nnoremap <leader><leader> :xa!<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <localleader><localleader> :xa!<CR>
+nnoremap <localleader>q :q<CR>
+nnoremap <localleader>w :w<CR>
 " Tab navigation like Firefox.
 nnoremap <S-tab>   :bn<CR>
 "nnoremap <C-t>     :tabnew<CR>

@@ -80,13 +80,13 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 	call dein#add('junegunn/fzf',{
 				\'merged':0,
 				\'on_cmd':'FZF',
-				\'hook_source': "let g:fzf_layout = { 'down': '~25%' }"
+				\'hook_source': "let g:fzf_layout = { 'down': '~45%' }"
 				\})
 	call dein#add('junegunn/fzf.vim',{
 				\'depends':'fzf',
 				\'merged':0,
-				\'on_cmd':['Files', 'GitFiles', 'Buffers', 'Lines', 'Locate', 'Colors', 'Ag', 'Rg', 'Tags'],
-				\'on_func':[ 'fzf#vim#with_preview', 'fzf#run', 'vista#finder#fzf#Run' ]
+				\'on_cmd':['Files', 'GitFiles', 'Buffers', 'Lines', 'Locate', 'Colors', 'Commands', 'Rg', 'Tags'],
+				\'on_func':[ 'fzf#vim#with_preview', 'fzf#run', 'vista#finder#fzf#Run']
 				\})
 
 	call dein#add('norcalli/nvim-colorizer.lua',{'if': has('nvim-0.4')
