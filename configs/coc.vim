@@ -8,6 +8,7 @@ let g:coc_global_extensions =  [
 			 \,'coc-pairs'
 			 \,'coc-snippets'
 			 \,'coc-prettier'
+			 \,'coc-flutter'
 			 \,'coc-texlab'
 			 \,'coc-tsserver'
 			 \,'coc-html'
