@@ -11,6 +11,8 @@
     "suggest.echodocSupport": true,
 	"suggest.noselect": false,
 
+	"npm.binPath":"/home/saikiran/.nvm/versions/node/v13.13.0/bin/npm",
+	"tsserver.npm":"/home/saikiran/.nvm/versions/node/v13.13.0/bin/npm",
 	"eslint.autoFixOnSave": true,
 	"eslint.autoFix": true,
 	"eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact","vue"],
