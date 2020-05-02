@@ -41,7 +41,7 @@ if dein#tap('rainbow_parentheses.vim')
 
 endif
 if dein#tap('coc.nvim')
-	let g:coc_node_path = '/home/saikiran/.nvm/versions/node/v13.13.0/bin/node'
+	let g:coc_node_path = '/home/saikiran/.nvm/versions/node/*/bin/node'
 	inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
       \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
