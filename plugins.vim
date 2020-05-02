@@ -27,7 +27,7 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     "call dein#add('itchyny/lightline.vim',{'merged': 0,'hook_source':'source $HOME/.config/nvim/configs/lightline.vim'})
     "call dein#add('ryanoasis/vim-devicons')
 
-    call dein#local("~/.config/nvim/plugin")
+    call dein#add('LinArcX/mpi',{'path':"~/.config/nvim/plugin/mpi"})
     call dein#add('justinmk/vim-gtfo')
     call dein#add('wellle/context.vim',{'merged':0})
     call dein#add('kien/rainbow_parentheses.vim', {'merged': 0})
