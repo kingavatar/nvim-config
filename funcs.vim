@@ -14,7 +14,7 @@ function! SetFiletype(filetype) " {{{
   elseif a:filetype == ''
       return '-'
   else
-      return mpi#get(a:filetype) . ' ' . a:filetype
+      return mpi#get(expand('%:t')) . ' ' . a:filetype
   endif
 endfunction
 
