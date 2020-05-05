@@ -9,6 +9,7 @@ let g:coc_global_extensions =  [
 			 \,'coc-snippets'
 			 \,'coc-prettier'
 			 \,'coc-flutter'
+			 \,'coc-go'
 			 \,'coc-texlab'
 			 \,'coc-tsserver'
 			 \,'coc-html'

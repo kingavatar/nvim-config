@@ -27,8 +27,8 @@ if has('vim_starting')
 	xnoremap <Space>  <Nop>
 	nnoremap ,        <Nop>
 	xnoremap ,        <Nop>
-	au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-	au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+	" au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+	" au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 endif
 
 
