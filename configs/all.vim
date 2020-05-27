@@ -112,8 +112,12 @@ if dein#tap('coc.nvim')
 
 	" Formatting selected code.
 	xmap <leader>f  <Plug>(coc-format-selected)
-	nmap <leader>f  <Plug>(coc-format-selected)
+	nmap <leader>f  <Plug>(coc-format-selected)	
 	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+	" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+	xmap <leader>a  <Plug>(coc-codeaction-selected)
+	nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 	" Remap keys for applying codeAction to the current line.
 	nmap <leader>ac  <Plug>(coc-codeaction)
@@ -127,6 +131,14 @@ if dein#tap('coc.nvim')
 
 	" Add `:OR` command for organize imports of the current buffer.
 	command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+	augroup mygroup
+  	autocmd!
+  	" Setup formatexpr specified filetype(s).
+  	autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  	" Update signature help on jump placeholder
+  	autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+	augroup end
 
 endif
 
