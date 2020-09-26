@@ -24,6 +24,7 @@
 	"git.addGblameToVirtualText": true,
 	"git.virtualTextPrefix": " ❯❯❯ ",
 	"python.linting.pylintArgs": ["--generate-members"],
+	"python.jediEnabled": false,
 	"languageserver": {
 		"bash": {
 			"command": "bash-language-server",

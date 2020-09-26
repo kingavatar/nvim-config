@@ -59,7 +59,8 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     call dein#add('raimon49/requirements.txt.vim', {'on_ft': 'requirements'})
 	" Cpp
 	call dein#add('octol/vim-cpp-enhanced-highlight',{'on_ft':['c','cpp']})
-
+	"Conky
+	call dein#add('smancill/conky-syntax.vim',{'on_ft':'.conkyrc'})
     "NeoVim Plugins
     call dein#add('Shougo/defx.nvim',{'on_cmd':'Defx',
 			    \'hook_source':'source $HOME/.config/nvim/configs/defx.vim',
