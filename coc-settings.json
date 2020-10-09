@@ -2,7 +2,7 @@
   "coc.preferences.formatOnType": true,
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
-  "signature.target": "echo",
+  "diagnostic.messageTarget": "float",
 
 	"suggest.triggerAfterInsertEnter": false,
   	"suggest.timeout": 500,
@@ -10,9 +10,8 @@
     "suggest.triggerCompletionWait": 100,
     "suggest.echodocSupport": true,
 	"suggest.noselect": false,
+	"suggest.enablePreview": true,
 
-	"npm.binPath":"/home/saikiran/.nvm/versions/node/*/bin/npm",
-	"tsserver.npm":"/home/saikiran/.nvm/versions/node/*/bin/npm",
 	"eslint.autoFixOnSave": true,
 	"eslint.autoFix": true,
 	"eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact","vue"],
@@ -26,12 +25,6 @@
 	"python.linting.pylintArgs": ["--generate-members"],
 	"python.jediEnabled": false,
 	"languageserver": {
-		"bash": {
-			"command": "bash-language-server",
-		"filetypes": ["sh"],
-		"args": ["start"],
-		"ignoredRootPaths": ["~"]
-    },
     "ocaml-lsp": {
         "command": "opam",
         "args": ["config", "exec", "--", "ocamllsp"],
@@ -62,6 +55,7 @@
     "javascriptreact",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "coc.preferences.extensionUpdateCheck": "daily"
 
 }

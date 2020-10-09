@@ -1,6 +1,5 @@
 let g:coc_global_extensions =  [
 			 \'coc-github'
-			 \,'coc-tabnine'
 			 \,'coc-git'
 			 \,'coc-vetur'
 			 \,'coc-java'
@@ -10,7 +9,7 @@ let g:coc_global_extensions =  [
 			 \,'coc-prettier'
 			 \,'coc-flutter'
 			 \,'coc-go'
-			 \,'coc-texlab'
+			 \,'coc-sh'
 			 \,'coc-tsserver'
 			 \,'coc-html'
 			 \,'coc-css'
