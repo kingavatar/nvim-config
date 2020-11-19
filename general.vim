@@ -9,6 +9,8 @@ set t_Co=256
 let g:material_theme_style = 'palenight-community'
 let g:material_terminal_italics = 1
 colorscheme material
+" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+au ColorScheme * hi Normal ctermbg=None guibg=None
 set scrolloff=1              " Always show at least one line above/below the cursor
 set sidescrolloff=5          " Always show at least one line left/right of the cursor
 set nocursorline             " Highlight the line on which the cursor lines

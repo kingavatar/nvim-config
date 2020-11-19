@@ -55,6 +55,7 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 			    \})
     call dein#add('elzr/vim-json', {'on_ft': 'json'})
     call dein#add('posva/vim-vue',{'on_ft':'vue'})
+    call dein#add('dart-lang/dart-vim-plugin',{'on_ft':'dart'})
     " Python
     call dein#add('vim-python/python-syntax',{'on_ft':'python'})
     call dein#add('Vimjas/vim-python-pep8-indent',{'on_ft':'python'})
