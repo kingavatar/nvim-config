@@ -24,3 +24,4 @@ set shortmess+=c  " Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes  " Always show the signcolumn, otherwise it would shift the text each time
 					" diagnostics appear/become resolved.
 
+

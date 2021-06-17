@@ -8,7 +8,7 @@ colorscheme palenight
 set scrolloff=1              " Always show at least one line above/below the cursor
 set sidescrolloff=5          " Always show at least one line left/right of the cursor
 set nocursorline             " Highlight the line on which the cursor lines
-set mouse=nv                 " Disable mouse in command-line mode
+set mouse=a                  " Enable mouse in command-line mode
 set errorbells               " Trigger bell on error
 set visualbell               " Use visual bell instead of beeping
 set hidden                   " hide buffers when abandoned instead of unload

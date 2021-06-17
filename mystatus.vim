@@ -65,6 +65,6 @@ set statusline+=%#mystatuslinesep#\
 set statusline+=%#mystatuslinesep#
 set statusline+=%#mystatusbody#☰\ \ 
 set statusline+=%#mystatusbody#%P
-set statusline+=\/\%#mystatusbody#%L
+set statusline+=\/\%#mystatusbody#%L\ 
 set statusline+=%#mystatuslinesep#
 

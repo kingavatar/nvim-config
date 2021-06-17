@@ -12,7 +12,7 @@ endif
 set runtimepath+=$HOME/.config/nvim/.cache/dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('$HOME/.config/nvim/.cache/dein')
-    call dein#begin('$HOME/.config/nvim/.cache/dein')
+    call dein#begin('$HOME/.config/nvim/.cache/dein',['$HOME/.config/nvim/plugins.vim'])
     " Startup Plugins
     call dein#add('$HOME/.config/nvim/.cache/dein/repos/github.com/Shougo/dein.vim')
     call dein#add('wsdjeg/dein-ui.vim',{'on_cmd':'DeinUpdate'})
@@ -78,15 +78,16 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 				\let g:vista_echo_cursor_strategy = 'floating_win'\n
 				\"})
 	call dein#add('junegunn/fzf',{
+				\'build':'./install --all',
 				\'merged':0,
-				\'on_cmd':'FZF',
-				\'hook_source': "let g:fzf_layout = { 'down': '~45%' }"
-				\})
+				\'on_cmd':'FZF'})
+    ""\'hook_source': "let g:fzf_layout = { 'down': '~50%' }"
 	call dein#add('junegunn/fzf.vim',{
 				\'depends':'fzf',
 				\'merged':0,
 				\'on_cmd':['Files', 'GitFiles', 'Buffers', 'Lines', 'Locate', 'Colors', 'Commands', 'Rg', 'Tags'],
-				\'on_func':[ 'fzf#vim#with_preview', 'fzf#run', 'vista#finder#fzf#Run']
+				\'on_func':[ 'fzf#vim#with_preview', 'fzf#run', 'vista#finder#fzf#Run','FzfFilePreview'],
+				\'hook_source':'source $VIM_PATH/configs/myfzf.vim'
 				\})
 
 	call dein#add('norcalli/nvim-colorizer.lua',{'if': has('nvim-0.4')
@@ -124,3 +125,4 @@ else
 	call dein#call_hook('source')
 	call dein#call_hook('post_source')
 endif
+
