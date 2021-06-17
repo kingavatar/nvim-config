@@ -1,7 +1,7 @@
 let g:dein#auto_recache = 1
 let g:dein#install_max_processes = 16
 let g:dein#install_progress_type = 'echo'
-let g:dein#enable_notification = 0
+let g:dein#enable_notification = 1
 
 let s:dein_dir = '$HOME/.config/nvim/.cache/dein/repos/github.com/Shougo/dein.vim'
 if (!isdirectory(expand(s:dein_dir)))
@@ -24,6 +24,7 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     call dein#add('arcticicestudio/nord-vim')
     call dein#add('jaredgorski/spacecamp')
     call dein#add('drewtempelmeyer/palenight.vim')
+    call dein#add('kaicataldo/material.vim', { 'rev': 'main' })
     "call dein#add('itchyny/lightline.vim',{'merged': 0,'hook_source':'source $HOME/.config/nvim/configs/lightline.vim'})
     "call dein#add('ryanoasis/vim-devicons')
 
@@ -40,6 +41,7 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 			    \highlight! link ClapMatches Function\n
 			    \highlight! link ClapNoMatchesFound WarningMsg\n
 			    \"})
+	call dein#add('vn-ki/coc-clap')
     " Lazy Loading
     " Javascript
     call dein#add('pangloss/vim-javascript',{'on_ft':['javascript','javascriptreact'],
@@ -53,13 +55,15 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 			    \})
     call dein#add('elzr/vim-json', {'on_ft': 'json'})
     call dein#add('posva/vim-vue',{'on_ft':'vue'})
+    call dein#add('dart-lang/dart-vim-plugin',{'on_ft':'dart'})
     " Python
     call dein#add('vim-python/python-syntax',{'on_ft':'python'})
     call dein#add('Vimjas/vim-python-pep8-indent',{'on_ft':'python'})
     call dein#add('raimon49/requirements.txt.vim', {'on_ft': 'requirements'})
 	" Cpp
 	call dein#add('octol/vim-cpp-enhanced-highlight',{'on_ft':['c','cpp']})
-
+	"Conky
+	call dein#add('smancill/conky-syntax.vim',{'on_ft':'.conkyrc'})
     "NeoVim Plugins
     call dein#add('Shougo/defx.nvim',{'on_cmd':'Defx',
 			    \'hook_source':'source $HOME/.config/nvim/configs/defx.vim',

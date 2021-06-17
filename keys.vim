@@ -22,6 +22,11 @@ map <A-Down> <C-w>-
 nnoremap <localleader><localleader> :xa!<CR>
 nnoremap <localleader>q :q<CR>
 nnoremap <localleader>w :w<CR>
+map <C-s> :w<CR>
+map <C-_> :Commentary<CR>
+inoremap <C-s> <C-o>:w<CR
+inoremap <C-_> <C-o>:Commentary<CR>
+
 " Tab navigation like Firefox.
 nnoremap <S-tab>   :bn<CR>
 "nnoremap <C-t>     :tabnew<CR>

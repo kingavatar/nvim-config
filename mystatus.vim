@@ -4,7 +4,7 @@ function! ChangeColorScheme(colorscheme,mode) " {{{
 	if a:colorscheme == 'nord'
 		hi mystatuslinesep ctermfg=8 guifg=#4C566A guibg=#2E3440
 		hi StatusLine ctermfg=6 ctermbg=8 guifg=#88C0D0 guibg=#4C566A
-	elseif a:colorscheme == 'palenight'
+	elseif a:colorscheme == 'palenight' || a:colorscheme == 'material'
 		hi TabLine ctermfg=145 ctermbg=59 guifg=#bfc7d5 guibg=#697098
 		if a:mode == 'n'
 			hi mystatuslinesep ctermfg=59 guifg=#697098 

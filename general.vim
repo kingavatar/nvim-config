@@ -2,9 +2,15 @@
 "colorscheme Tomorrow-Night-Bright
 "colorscheme Tomorrow-Night-Blue
 "colorscheme spacecamp
-set background=dark
+" set background=dark
 set t_Co=256
-colorscheme palenight
+" let g:palenight_terminal_italics=1
+" colorscheme palenight
+let g:material_theme_style = 'palenight-community'
+let g:material_terminal_italics = 1
+colorscheme material
+" autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+au ColorScheme * hi Normal ctermbg=None guibg=None
 set scrolloff=1              " Always show at least one line above/below the cursor
 set sidescrolloff=5          " Always show at least one line left/right of the cursor
 set nocursorline             " Highlight the line on which the cursor lines
@@ -17,6 +23,7 @@ set virtualedit=block        " Position cursor anywhere in visual block
 set formatoptions+=1         " Don't break lines after a one-letter word
 set formatoptions-=t         " Don't auto-wrap text
 set autoread      			 " Set to auto read when a file is changed from the outside
+
 
 if has('patch-7.3.541')
 	set formatoptions+=j       " Remove comment leader when joining lines
