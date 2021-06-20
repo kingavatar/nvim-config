@@ -1,0 +1,4 @@
+[submodule "plugin/mpi"]
+	path = plugin/mpi
+	url = https://github.com/LinArcX/mpi.git
+	branch = master
