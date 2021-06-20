@@ -27,6 +27,9 @@ if has('vim_starting')
 	xnoremap <Space>  <Nop>
 	nnoremap ,        <Nop>
 	xnoremap ,        <Nop>
+	au VimEnter * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsoleVim
+	au VimLeave * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsole
+
 	" au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 	" au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 endif
@@ -67,8 +70,6 @@ call s:source_file('configs/all.vim')
 " runtime plugins.vim
 call s:source_file('general.vim')
 call s:source_file('keys.vim')
-"call s:source_file('configs/lightline.vim')
 call s:source_file('funcs.vim')
 call s:source_file('mystatus.vim')
 call s:source_file('mytab.vim')
-call s:source_file('configs/coc.vim')

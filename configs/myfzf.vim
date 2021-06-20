@@ -87,3 +87,46 @@ function! FzfFilePreview()
 			\ 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true} })
 
 endfunction
+
+function! TFile(dir)
+  if empty(a:dir)
+    let dir = getcwd()
+  else
+    let dir = a:dir
+  endif
+  let parentdir = fnamemodify(dir, ':h')
+  let spec = fzf#wrap(fzf#vim#with_preview({'source': 'ls -1ap','options': ['--expect', 'enter'] }))
+
+  " hack to retain original sink used by fzf#vim#files
+  let origspec = copy(spec)
+
+  unlet spec.sinklist
+  unlet spec['sink*']
+  function spec.sinklist(lines) closure
+  	echo a:lines.' '.dir
+    if len(a:lines) < 2
+      return
+    endif
+    if a:lines[0] == 'enter'
+      call TFile(parentdir)
+    else
+      call origspec.sinklist(a:lines)
+    end
+  endfunction
+  call fzf#vim#files(dir, spec)
+endfunction
+
+function! FzfExplore(...)
+	let inpath = substitute(a:1, "'", '', 'g')
+	 if inpath == "" || matchend(inpath, '/') == strlen(inpath)
+        execute "cd" getcwd() . '/' . inpath
+        let cwpath = getcwd() . '/'
+        call fzf#run(fzf#wrap(fzf#vim#with_preview({'source': 'ls -1ap', 'dir': cwpath, 'sink': 'FZFExplore', 'options': ['--prompt', cwpath]})))
+    else
+        let file = getcwd() . '/' . inpath
+        execute "e" file
+    endif
+endfunction
+
+
+command! -nargs=* FZFExplore call FzfExplore(shellescape(<q-args>))

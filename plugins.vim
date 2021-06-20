@@ -29,8 +29,8 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
     "call dein#add('ryanoasis/vim-devicons')
 
     call dein#add('LinArcX/mpi',{'path':"~/.config/nvim/plugin/mpi"})
-    call dein#add('justinmk/vim-gtfo')
-    call dein#add('wellle/context.vim',{'merged':0})
+	call dein#add('justinmk/vim-gtfo',{'on_map': {'n' : ['gof', 'goF', 'got', 'goF']}, 'hook_add':"let g:gtfo#terminals = { 'unix': 'konsole' }"})
+    " call dein#add('wellle/context.vim',{'merged':0})
     call dein#add('kien/rainbow_parentheses.vim', {'merged': 0})
     call dein#add('liuchengxu/vim-clap',{'merged':0,
 				\'hook_post_update':':Clap install-binary!',
@@ -41,7 +41,6 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 			    \highlight! link ClapMatches Function\n
 			    \highlight! link ClapNoMatchesFound WarningMsg\n
 			    \"})
-	call dein#add('vn-ki/coc-clap')
     " Lazy Loading
     " Javascript
     call dein#add('pangloss/vim-javascript',{'on_ft':['javascript','javascriptreact'],
@@ -109,6 +108,11 @@ if dein#load_state('$HOME/.config/nvim/.cache/dein')
 				\'merged':0,
 				\'do':'-> coc#util#install',
 				\'hook_source':'source $VIM_PATH/configs/coc.vim'})
+
+	call dein#add('antoinemadec/coc-fzf', {'rev': 'release',
+				\'on_cmd':['CocFzfList', 'CocFzfListResume']})
+
+	call dein#add('vn-ki/coc-clap')
 
 	call dein#add('honza/vim-snippets',{'if': has('python3'),'merged':0})	
     " Code Editing Plugins

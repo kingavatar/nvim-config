@@ -43,7 +43,10 @@ set statusline+=%#mystatusbody#\%{GetReadOnly()}
 set statusline+=%#mystatusbody#%m 
 set statusline+=%#mystatuslinesep#\ 
 set statusline+=%{StatuslineGit()}
-set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+if dein#tap('coc.nvim')
+	set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+endif
+
 " Right Side mystatusbody
 
 set statusline+=%=

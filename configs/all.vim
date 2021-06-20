@@ -153,7 +153,9 @@ if dein#tap('fzf.vim')
 
 	nnoremap <silent> <localleader>e :call FzfFilePreview()<CR>
 
-	command! LS call fzf#run(fzf#wrap({'source': 'ls -la'}))
+	command! LS call fzf#run(fzf#wrap({'source': 'ls -a'}))
+	command! -nargs=* TFile call TFile(<q-args>)
+
 	" Path completion with custom source command
 	"inoremap <expr> <c-x><c-f> fzf#vim#complete#path('fd ~')
 	" inoremap <expr> <c-x><c-f> fzf#vim#complete#path('rg --files')
