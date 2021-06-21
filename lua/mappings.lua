@@ -17,10 +17,10 @@ map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- SAVE --
 map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
-map("i", "<C-s>", [[ <Cmd> w <CR>]], opt)
+map("i", "<C-s>", [[ <Esc> :w <CR>]], opt)
 
 -- UNDO --
-map("i","<C-z>",[[ <Cmd> z <CR>]], opt)
+map("i","<C-z>",[[ <Cmd> u <CR>]], opt)
 
 -- TOGGLE SPELL CHECK --
 map("n","<leader>ss",[[ <Cmd> setlocal spell!<cr>]],opt)
