@@ -26,13 +26,15 @@ return require('packer').startup(
    	]] }
 
   -- language plugins
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require 'plugins/nvimtreesitter' end }
 
 
   -- editing helper plugins
   use { 'tpope/vim-repeat', keys = '.'}
-  -- file manager
 
+  -- file manager
+  use {"kyazdani42/nvim-tree.lua", config= function() require 'plugins/nvimtree' end, requires = {'kyazdani42/nvim-web-devicons'}}
+  use {'kyazdani42/nvim-web-devicons', config = function() require 'file-icons' end}
   -- miscellaneous
   use {
     'glepnir/galaxyline.nvim', branch = 'main', config = function() require'plugins/statusline' end,
@@ -43,7 +45,7 @@ return require('packer').startup(
   	'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
     config = function() require 'plugins/gitsigns' end
   }
-  use {"lukas-reineke/indent-blankline.nvim", branch = "lua"}
+  use {"lukas-reineke/indent-blankline.nvim", branch = "lua", config = function() require 'plugins/blankline' end}
 
 
 

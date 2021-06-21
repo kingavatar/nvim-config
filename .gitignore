@@ -1,3 +1,4 @@
 undo/
 site/
 .cache/
+plugin/packer_compiled.vim

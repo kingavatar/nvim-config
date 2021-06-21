@@ -36,7 +36,7 @@ end
 
 -- Italic Comments
 
-cmd "highlight Comment cterm=italic"
+cmd "hi Comment cterm=italic gui=italic"
 
 -- blankline
 
@@ -55,7 +55,14 @@ cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
 -- line n.o
 cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
+cmd "augroup CLClear"
+cmd "   autocmd! ColorScheme * hi clear CursorLine"
+cmd "augroup END"
+fg("CursorLineNR", white)
+cmd "hi CursorLineNR cterm=bold gui=bold"
+cmd "augroup CLNRSet"
+cmd "    autocmd! ColorScheme * hi CursorLineNR cterm=bold gui=bold"
+cmd "augroup END"
 
 -- git signs ---
 fg_bg("DiffAdd", nord_blue, "none")
