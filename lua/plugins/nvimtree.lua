@@ -46,19 +46,17 @@ g.nvim_tree_icons = {
 -- Mappings for nvimtree
 
 vim.api.nvim_set_keymap(
-    "n",
-    "<C-n>",
-    ":NvimTreeToggle<CR>",
-    {
-        noremap = true,
-        silent = true
-    }
+  'n', 
+  '<leader>d',
+  [[ <Cmd> NvimTreeToggle<CR>]], 
+  {noremap = true, silent = true}
 )
+
 
 local tree_cb = require "nvim-tree.config".nvim_tree_callback
 
 g.nvim_tree_bindings = {
-    ["u"] = ":lua require'some_module'.some_function()<cr>",
+    -- ["u"] = ":lua require'some_module'.some_function()<cr>",
     -- default mappings
     ["<CR>"] = tree_cb("edit"),
     ["o"] = tree_cb("edit"),
@@ -91,3 +89,9 @@ g.nvim_tree_bindings = {
     ["-"] = tree_cb("dir_up"),
     ["q"] = tree_cb("close")
 }
+
+vim.api.nvim_exec([[
+  au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif
+]],
+  false
+)
