@@ -8,24 +8,29 @@ end
 
 local opt = {}
 
-vim.g.mapleader = ","
 -- COPY EVERYTHING --
-map("n", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
+map("i", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
 
 -- TOGGLE NUMBERS --
 map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
 
 -- SAVE --
-map("n", "<C-s>", [[ <Cmd> w <CR>]], opt)
-map("i", "<C-s>", [[ <Esc> :w <CR>]], opt)
-
--- UNDO --
-map("i","<C-z>",[[ <Cmd> u <CR>]], opt)
+map("n", "<leader>w", [[ <Cmd> w<CR>]], opt)
 
 -- TOGGLE SPELL CHECK --
-map("n","<leader>ss",[[ <Cmd> setlocal spell!<cr>]],opt)
+-- map("n","<leader>ss",[[ <Cmd> setlocal spell!<cr>]],opt)
 
+-- QUICK ESC --
 map('i', 'jj', '<Esc>', {noremap = true, silent = false})
+
+-- TOGGLE NVIMTREE --
+-- map('n', '<leader>d', [[ <Cmd> NvimTreeToggle<CR>]], 
+--   {noremap = true, silent = false}
+-- )
+
+-- TOGGLE TRUEZEN.NVIM'S ATARAXIS AND MINIMALIST MODE --
+map("n", "<leader>z", [[ <Cmd> TZAtaraxis<CR>]], opt)
+map("n", "<leader>m", [[ <Cmd> TZMinimalist<CR>]], opt)
 
 -- QUICK WINDOW SWITCHING AND SIZING --
 map("n","<C-Down>",[[<C-W>j]],opt)

@@ -50,6 +50,12 @@ fg("NvimInternalError", red)
 fg("VertSplit", line)
 fg("EndOfBuffer", black)
 
+-- Pmenu
+bg("Pmenu", one_bg)
+bg("PmenuSbar", one_bg2)
+bg("PmenuSel", green)
+bg("PmenuThumb", nord_blue)
+
 -- inactive statuslines as thin splitlines
 cmd("hi! StatusLineNC gui=underline guifg=" .. line)
 
@@ -68,6 +74,17 @@ cmd "augroup END"
 fg_bg("DiffAdd", nord_blue, "none")
 fg_bg("DiffChange", one_bg2, "none")
 fg_bg("DiffModified", nord_blue, "none")
+
+-- NvimTree
+fg("NvimTreeFolderIcon", blue)
+fg("NvimTreeFolderName", blue)
+fg("NvimTreeIndentMarker", one_bg2)
+fg("NvimTreeVertSplit", darker_black)
+bg("NvimTreeVertSplit", darker_black)
+
+fg("NvimTreeRootFolder", darker_black)
+bg("NvimTreeNormal", darker_black)
+fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 
 -- LspDiagnostics ---
 
@@ -117,6 +134,13 @@ fg_bg("BufferLineModifiedSelected", green, black)
 fg_bg("BufferLineCLoseButtonVisible", light_grey, black2)
 fg_bg("BufferLineCLoseButton", light_grey, black2)
 fg_bg("BufferLineCLoseButtonSelected", red, black)
+
+-- Dashboard
+
+fg("DashboardHeader", grey_fg)
+fg("DashboardCenter", grey_fg)
+fg("DashboardShortcut", grey_fg)
+fg("DashboardFooter", grey_fg)
 
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
