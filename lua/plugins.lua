@@ -76,6 +76,9 @@ return require('packer').startup(
   -- Editing Helper Plugins
 
   use { 'tpope/vim-repeat', keys = '.'}
+ 
+  
+  -- File Manager, Naviagtion
 
   -- File Manager, Naviagtion
 
