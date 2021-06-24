@@ -16,7 +16,9 @@ require "compe".setup {
     source = {
         buffer = {kind = "﬘", true},
         vsnip = {kind = "﬌"}, --replace to what sign you prefer
-        nvim_lsp = true
+        nvim_lsp = true,
+        path = true,
+        nvim_lua = true,
     }
 }
 
@@ -38,6 +40,8 @@ end
 _G.tab_complete = function()
     if vim.fn.pumvisible() == 1 then
         return t "<C-n>"
+    elseif vim.fn.call("vsnip#available", {1}) == 1 then
+	    return t "<Plug>(vsnip-expand-or-jump)"
     elseif check_back_space() then
         return t "<Tab>"
     else
@@ -71,4 +75,9 @@ function _G.completions()
     return npairs.check_break_line_char()
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
+-- vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
+vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-space>", "compe#complete()", {expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({ 'delta': -4 })", {expr = true, noremap = true, silent = true })

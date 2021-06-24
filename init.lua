@@ -8,11 +8,11 @@ cmd('syntax on')
 
 if vim.fn.has('vim_starting') then
   vim.g.mapleader = ","
-  vim.g.maplocalleader = [[<Space>]]
+  vim.g.maplocalleader = " "
 
   -- Release keymappings prefixes, evict entirely for use of plug-ins.
-  -- cmd [[nnoremap <Space>  <Nop>]]
-  -- cmd [[xnoremap <Space>  <Nop>]]
+  cmd [[nnoremap <Space>  <Nop>]]
+  cmd [[xnoremap <Space>  <Nop>]]
   -- cmd [[nnoremap ,        <Nop>]]
   -- cmd [[xnoremap ,        <Nop>]]
 

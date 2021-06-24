@@ -1,5 +1,6 @@
--- blankline
-g=vim.g
+-- Blankline --
+
+local g=vim.g
 
 g.indentLine_enabled = 1
 g.indent_blankline_char = "▏"

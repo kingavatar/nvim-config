@@ -54,28 +54,68 @@ require("telescope").setup {
     }
 }
 
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+-- To get fzf loaded and working with telescope, you need to call
+-- load_extension, somewhere after setup function:
+require('telescope').load_extension('fzf')
+
+
 require("telescope").load_extension("media_files")
 
 local opt = {noremap = true, silent = true}
 local map = vim.api.nvim_set_keymap
 
 -- Mappings
-map("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
-map(
-    "n",
-    "<Leader>fp",
-    [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
-    opt
-)
+-- map("n", "<Leader>ff", [[<Cmd>lua require('telescope.builtin').find_files()<CR>]], opt)
+-- map(
+--     "n",
+--     "<Leader>fp",
+--     [[<Cmd>lua require('telescope').extensions.media_files.media_files()<CR>]],
+--     opt
+-- )
 
-map("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
-map("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
-map("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
-map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
+-- map("n", "<Leader>fb", [[<Cmd>lua require('telescope.builtin').buffers()<CR>]], opt)
+-- map("n", "<Leader>fh", [[<Cmd>lua require('telescope.builtin').help_tags()<CR>]], opt)
+-- map("n", "<Leader>fo", [[<Cmd>lua require('telescope.builtin').oldfiles()<CR>]], opt)
+-- map("n", "<Leader>fm", [[<Cmd> Neoformat<CR>]], opt)
 
--- Dashboard stuff
-map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
-map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
-map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
-map("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
-map("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)
+-- -- Dashboard stuff
+-- map("n", "<Leader>fw", [[<Cmd> Telescope live_grep<CR>]], opt)
+-- map("n", "<Leader>fn", [[<Cmd> DashboardNewFile<CR>]], opt)
+-- map("n", "<Leader>bm", [[<Cmd> DashboardJumpMarks<CR>]], opt)
+-- map("n", "<Leader>sl", [[<Cmd> SessionLoad<CR>]], opt)
+-- map("n", "<Leader>ss", [[<Cmd> SessionSave<CR>]], opt)
+
+local wk = require("which-key")
+
+wk.register({
+  ["<leader>"]={
+  	f={
+  	  name="+file",
+  	  f = { '<Cmd> Telescope find_files<CR>', "Find Files"},
+	  o = { '<Cmd> Telescope oldfiles<CR>', "Open Recent Files"},
+	  p = { '<Cmd> Telescope media_files<CR>', "Open Media Files"},
+	  n = { '<Cmd> DashboardNewFile<CR>', "Open New File"},
+	  w = { '<Cmd> Telescope live_grep<CR>', "Live Grep"},
+	  m = { '<Cmd> Neoformat<CR>', "Format File"},
+	  j = { '<Cmd> DashboardJumpMarks<CR>', "Dashboard Jump Marks"},
+	  h = { '<Cmd> Telescope help_tags<CR>', "Open Help Tags"},
+  	},
+  	s={
+  	  name="+session",
+  	  l={ '<Cmd> SessionLoad<CR>', "Load Session"},
+  	  s={ '<Cmd> SessionSave<CR>', "Save Session"}
+  	}
+  }
+
+},opt)
