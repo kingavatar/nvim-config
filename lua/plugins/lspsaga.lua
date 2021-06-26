@@ -37,18 +37,33 @@ wk.register({
 	  name="+lspsaga",
 	  h = { require('lspsaga.provider').lsp_finder, "Lsp Saga Finder" },
 	  a = { require('lspsaga.codeaction').code_action,
-	  	"Lsp Saga Code Action"}
-  	}
-},{ noremap = true, mode = "n" })
+	  	"Lsp Saga Code Action" },
+	  d = { require'lspsaga.diagnostic'.show_line_diagnostics, "Lsp Saga Show Line Diagnostics" },
+	  c = { require'lspsaga.diagnostic'.show_cursor_diagnostics, "Lsp Saga Show Cursor Diagnostics" }
+  	},
+  ["K"] = {require('lspsaga.hover').render_hover_doc , "Lsp Saga Documentation" },
+  ["<C-f>"] = {require('lspsaga.action').smart_scroll_with_saga(1), "Lsp Saga Doc scroll up" },
+  ["<C-b>"] = {require('lspsaga.action').smart_scroll_with_saga(-1), "Lsp Saga Doc scroll down" },
+  ["gr"] = { require('lspsaga.rename').rename, "Lsp Saga Rename" },
+  ["gd"] = { require'lspsaga.provider'.preview_definition, "Lsp Saga Preview Definition" },
+  ["gs"] = { require('lspsaga.signaturehelp').signature_help, "Lsp Saga Signature Help" },
+  ["[e"] = { require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev, "Lsp Saga Jump Diagnostics Prev" },
+  ["]e"] = { require'lspsaga.diagnostic'.lsp_jump_diagnostic_next, "Lsp Saga Jump Diagnostics Next" },
+  ["<A-d>"] = { require('lspsaga.floaterm').open_float_terminal, "Lsp Saga Float Terminal" }
+},{ noremap = true, mode = "n", silent=true })
 
 wk.register({
   ["<leader>p"]={
 	  name="+lspsaga",
 	  a = { ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", "Lsp Saga Ranged Code Action" }
   }
-},{mode="v",noremap = true})
+},{mode="v",noremap = true, silent = true})
 
-wk.register({
-	["gr"] = { require('lspsaga.rename').rename, "Lsp Saga Rename" },
-	["gd"] = { require'lspsaga.provider'.preview_definition, "Lsp Saga Preview Definition" }
-},{ mode="n", noremap = true, silent = true })
+
+vim.cmd[[tnoremap <silent> <A-d> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>]]
+
+vim.cmd "augroup Signature"
+vim.cmd "autocmd! * <buffer>"
+vim.cmd[[autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
+-- vim.cmd[[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
+vim.cmd "augroup end"
