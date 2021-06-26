@@ -1,11 +1,12 @@
+local treesitter = require "vim.treesitter"
 vim.o.completeopt = "menuone,noselect"
 
 require "compe".setup {
     enabled = true,
     autocomplete = true,
     debug = false,
-    min_length = 1,
-    preselect = "enable",
+    min_length = 2,
+    preselect = "disable",
     throttle_time = 80,
     source_timeout = 200,
     incomplete_delay = 400,
@@ -13,12 +14,19 @@ require "compe".setup {
     max_kind_width = 100,
     max_menu_width = 100,
     documentation = true,
+    allow_prefix_unmatch = false,
     source = {
         buffer = {kind = "﬘", true},
-        vsnip = {kind = "﬌"}, --replace to what sign you prefer
+        vsnip = {kind = "﬌", true},  --replace to what sign you prefer
         nvim_lsp = true,
+        calc = true,
         path = true,
         nvim_lua = true,
+        omni = false,
+        treesitter = true,
+        snippets_nvim = true,
+        tags = true,
+        spell = true
     }
 }
 
@@ -65,18 +73,20 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
+local npairs = require("nvim-autopairs")
 function _G.completions()
-    local npairs = require("nvim-autopairs")
-    if vim.fn.pumvisible() == 1 then
-        if vim.fn.complete_info()["selected"] ~= -1 then
-            return vim.fn["compe#confirm"]("<CR>")
-        end
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+    else
+      return npairs.esc("<cr>")
     end
-    return npairs.check_break_line_char()
+  else
+    return npairs.autopairs_cr()
+  end
 end
 
--- vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true})
-vim.api.nvim_set_keymap("i", "<CR>", "compe#confirm('<CR>')", {expr = true, noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua.completions()", {expr = true, noremap = true})
 vim.api.nvim_set_keymap("i", "<C-space>", "compe#complete()", {expr = true, noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", {expr = true, noremap = true, silent = true })
 vim.api.nvim_set_keymap("i", "<C-f>", "compe#scroll({ 'delta': +4 })", {expr = true, noremap = true, silent = true })

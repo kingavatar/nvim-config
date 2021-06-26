@@ -36,12 +36,12 @@ end
 
  -- opt("o", wildmode, "list:longest")
 opt("o", "wildignorecase", true)
-opt("o", "wildignore", vim.o.wildignore .. [[.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*]])
-opt("o", "wildignore", vim.o.wildignore .. [[*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store]])
-opt("o", "wildignore", vim.o.wildignore .. [[**/node_modules/**,**/bower_modules/**,*/.sass-cache/*]])
-opt("o", "wildignore", vim.o.wildignore .. [[application/vendor/**,**/vendor/ckeditor/**,media/vendor/**]])
-opt("o", "wildignore", vim.o.wildignore .. [[__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**]])
-cmd "set wildcharm=<C-z>"  -- substitue for 'wildchar' (<Tab>) in macros
+-- opt("o", "wildignore", vim.o.wildignore .. [[.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*]])
+-- opt("o", "wildignore", vim.o.wildignore .. [[*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store]])
+-- opt("o", "wildignore", vim.o.wildignore .. [[**/node_modules/**,**/bower_modules/**,*/.sass-cache/*]])
+-- opt("o", "wildignore", vim.o.wildignore .. [[application/vendor/**,**/vendor/ckeditor/**,media/vendor/**]])
+-- opt("o", "wildignore", vim.o.wildignore .. [[__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**]])
+-- cmd "set wildcharm=<C-z>"  -- substitue for 'wildchar' (<Tab>) in macros
 
 opt("o", "history", 2000)
 opt("o", "undolevels", 1000)     -- use many muchos levels of undo
