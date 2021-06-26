@@ -15,6 +15,5 @@ local settings = {
 	}
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-return settings, capabilities
+return {settings = settings }
