@@ -209,6 +209,14 @@ return require('packer').startup(
 	config = function() require 'neogit'.setup {} end,
 	requires = 'nvim-lua/plenary.nvim' 
   }
+  use({
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
+    config = function()
+      require("plugins.diffview")
+    end,
+  })
+
 
 
   -- Miscellaneous
@@ -227,6 +235,16 @@ return require('packer').startup(
     end
   }
 
+   -- load autosave only if its globally enabled
+    use {
+        "Pocco81/AutoSave.nvim",
+        config = function()
+            require("plugins.autosave").config()
+        end,
+        cond = function()
+            return vim.g.auto_save == true
+        end
+    }
   use {
 	'sudormrfbin/cheatsheet.nvim',
 	requires = {
