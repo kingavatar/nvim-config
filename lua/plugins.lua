@@ -69,9 +69,31 @@ return require('packer').startup(
 
 
   use { 'hrsh7th/nvim-compe',
-     config = function() require 'plugins/comple' end,
+    event = "InsertEnter",
+     config = function() require('plugins.comple').config() end,
+     wants = {"LuaSnip"},
      requires={
-     	{'windwp/nvim-autopairs', config = function() require("nvim-autopairs").setup() end},
+     	{'windwp/nvim-autopairs',
+     	  after = "nvim-compe",
+     	  config = function()
+            require("nvim-autopairs").setup()
+     	    require("nvim-autopairs.completion.compe").setup(
+                    {
+                        map_cr = true,
+                        map_complete = true -- insert () func completion
+                    }
+            )
+     	  end
+     	},
+     	{
+          "L3MON4D3/LuaSnip",
+          wants = "friendly-snippets",
+          event = "InsertCharPre",
+          config = function()
+              require("plugins.comple").snippets()
+          end
+        },
+        "rafamadriz/friendly-snippets"
      }
   }
   use { 'sbdchd/neoformat' }
