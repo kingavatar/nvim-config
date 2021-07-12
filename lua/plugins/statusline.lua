@@ -2,9 +2,15 @@ local gl = require("galaxyline")
 local gls = gl.section
 local condition = require("galaxyline.condition")
 
-gl.short_line_list = {" "}
+gl.short_line_list = {"packer", " ", "NvimTree", "Outline"}
 
-local colors = require "themes/onedark"
+-- local colors = require "themes/onedark"
+-- colors.blue2 = colors.blue
+local colors = require("tokyonight.colors").setup(require("tokyonight.config"))
+colors.statusline_bg = colors.bg_statusline
+colors.lightbg = colors.fg_gutter
+colors.nord_blue = colors.blue
+colors.lightbg2 = colors.bg
 
 gls.left[1] = {
   FirstElement = {
@@ -28,15 +34,15 @@ gls.left[3] = {
     FileIcon = {
         provider = "FileIcon",
         condition = condition.buffer_not_empty,
-        highlight = {colors.white, colors.lightbg}
+        highlight = {colors.none, colors.lightbg}
     }
 }
 
 gls.left[4] = {
     FileName = {
         provider = {"FileName"},
-        condition = condition.buffer_not_empty,
-        highlight = {colors.white, colors.lightbg},
+      --  condition = condition.buffer_not_empty,
+        highlight = {colors.none, colors.lightbg},
         separator = " ",
         separator_highlight = {colors.lightbg, colors.lightbg2}
     }
@@ -46,9 +52,9 @@ gls.left[5] = {
     current_dir = {
         provider = function()
             local dir_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-            return "  " .. dir_name .. " "
+            return " " .. dir_name .. " "
         end,
-        highlight = {colors.grey_fg2, colors.lightbg2},
+        highlight = {colors.none, colors.lightbg2},
         separator = " ",
         separator_highlight = {colors.lightbg2, colors.statusline_bg}
     }
@@ -56,7 +62,7 @@ gls.left[5] = {
 
 local checkwidth = function()
     local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 30 then
+    if squeeze_width > 55 then
         return true
     end
     return false
@@ -92,7 +98,7 @@ gls.left[8] = {
 gls.left[9] = {
     DiagnosticError = {
         provider = "DiagnosticError",
-        icon = "  ",
+        icon = "  ",
         highlight = {colors.red, colors.statusline_bg}
     }
 }
@@ -100,8 +106,24 @@ gls.left[9] = {
 gls.left[10] = {
     DiagnosticWarn = {
         provider = "DiagnosticWarn",
-        icon = "  ",
+        icon = "  ",
         highlight = {colors.yellow, colors.statusline_bg}
+    }
+}
+
+gls.left[11] = {
+    DiagnosticHint = {
+        provider = "DiagnosticHint",
+        icon = "  ",
+        highlight = {colors.teal, colors.statusline_bg}
+    }
+}
+
+gls.left[12] = {
+    DiagnosticInfo = {
+        provider = "DiagnosticInfo",
+        icon = "  ",
+        highlight = {colors.blue2, colors.statusline_bg}
     }
 }
 
@@ -110,7 +132,7 @@ gls.right[1] = {
         provider = function()
             local clients = vim.lsp.get_active_clients()
             if next(clients) ~= nil then
-                return " " .. "  " .. " LSP "
+                return " " .. "  " .. "LSP " .. require("galaxyline.provider_lsp").get_lsp_client() .. " "
             else
                 return ""
             end
@@ -124,7 +146,7 @@ gls.right[2] = {
         provider = function()
             return " "
         end,
-        condition = require("galaxyline.provider_vcs").check_git_workspace,
+        condition = require("galaxyline.condition").check_git_workspace,
         highlight = {colors.grey_fg2, colors.lightbg},
         separator = "",
         separator_highlight = {colors.lightbg, colors.statusline_bg}
@@ -134,12 +156,41 @@ gls.right[2] = {
 gls.right[3] = {
     GitBranch = {
         provider = "GitBranch",
-        condition = require("galaxyline.provider_vcs").check_git_workspace,
+        condition = require("galaxyline.condition").check_git_workspace,
         highlight = {colors.grey_fg2, colors.lightbg}
     }
 }
 
 gls.right[4] = {
+    lsp_status_icon = {
+        provider = function()
+            return " "
+        end,
+        highlight = {colors.statusline_bg, colors.yellow},
+        condition = checkwidth,
+        separator = " ",
+        separator_highlight = {colors.yellow, colors.lightbg}
+    }
+}
+
+gls.right[5] = {
+    lsp_status_message = {
+        provider = function()
+            local clients = vim.lsp.get_active_clients()
+            if next(clients) ~= nil then
+                return "  " .. require('lsp-status').status()
+            else
+                return ""
+            end
+        end,
+        condition = checkwidth,
+        highlight = {colors.yellow, colors.lightbg}
+    }
+}
+
+
+
+gls.right[6] = {
     viMode_icon = {
         provider = function()
             return " "
@@ -150,7 +201,7 @@ gls.right[4] = {
     }
 }
 
-gls.right[5] = {
+gls.right[7] = {
     ViMode = {
         provider = function()
             local alias = {
@@ -174,7 +225,7 @@ gls.right[5] = {
     }
 }
 
-gls.right[6] = {
+gls.right[8] = {
     some_icon = {
         provider = function()
             return " "
@@ -185,7 +236,7 @@ gls.right[6] = {
     }
 }
 
-gls.right[7] = {
+gls.right[9] = {
     line_percentage = {
         provider = function()
             local current_line = vim.fn.line(".")

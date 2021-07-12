@@ -32,15 +32,13 @@ return require('packer').startup(
 
   -- color scheme
 
-  use {'kaicataldo/material.vim', branch='main' ,
-  	config = function ()
-  	    vim.g.material_theme_style = 'palenight'
-  		vim.g.material_terminal_italics = 1
-  		vim.cmd "colorscheme material"
-  	 	-- vim.cmd "au ColorScheme * hi Normal ctermbg=None guibg=None"
-   	end
+  use {
+    -- 'kaicataldo/material.vim',
+    -- "sainnhe/edge",
+    -- "sainnhe/sonokai",
+    'folke/tokyonight.nvim',
+    config = function() require("plugins.theme") end
   }
-
 
   -- language plugins
 
@@ -120,8 +118,8 @@ return require('packer').startup(
   -- Editing Helper Plugins
 
   use { 'tpope/vim-repeat', keys = '.'}
- 
-  
+
+
   -- File Manager, Naviagtion
 
   -- File Manager, Naviagtion
@@ -178,15 +176,20 @@ return require('packer').startup(
   -- Display Plugins
 
   use {
-    'glepnir/galaxyline.nvim', branch = 'main', config = function() require'plugins/statusline' end,
+    'glepnir/galaxyline.nvim',
+    event = "VimEnter",
+    config = function() require'plugins/statusline' end,
     requires = {'kyazdani42/nvim-web-devicons'}
   }
 
-  use { 'akinsho/nvim-bufferline.lua', config = function() require 'plugins/tabline' end,
   use {'kyazdani42/nvim-web-devicons',
       module = "nvim-web-devicons",
       config = function() require('file-icons').config() end
   }
+
+  use { 'akinsho/nvim-bufferline.lua',
+    event = "BufReadPre",
+    config = function() require 'plugins.tabline' end,
 	requires = 'kyazdani42/nvim-web-devicons'
   }
 

@@ -15,10 +15,10 @@ if vim.fn.has('vim_starting') then
 end
 
 
+cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+
 require("mappings")
 require("general")
-cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-require("plugins")
-require("highlights")
-
+vim.defer_fn(function () require("plugins") end, 0)
+-- require("highlights")  -- Tokyonight ColorScheme Provides all necessarry highlights
 
