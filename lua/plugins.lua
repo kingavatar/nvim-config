@@ -175,7 +175,8 @@ return require('packer').startup(
 
   use {
   	'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-    config = function() require 'plugins/gitsigns' end
+  	event = "BufReadPre",
+    config = function() require('plugins.gitsigns').config() end
   }
   use { 'TimUntersberger/neogit',
 	config = function() require 'neogit'.setup {} end,
