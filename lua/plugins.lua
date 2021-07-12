@@ -120,9 +120,14 @@ return require('packer').startup(
 
   -- File Manager, Naviagtion
 
-  use {'kyazdani42/nvim-tree.lua', config= function() require 'plugins/nvimtree' end,
-	requires = {{'kyazdani42/nvim-web-devicons', config = function() require 'file-icons' end}}
+  use {'kyazdani42/nvim-tree.lua', config= function() require('plugins.nvimtree').config() end,
+      cmd = { "NvimTreeToggle", "NvimTreeClose" },
+	  requires = {}
   }
+  -- use {
+  --   'yamatsum/nvim-nonicons',
+  --   requires = {'kyazdani42/nvim-web-devicons'}
+  -- }
 
   use {'famiu/bufdelete.nvim'}
 
