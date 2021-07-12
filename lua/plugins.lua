@@ -111,8 +111,8 @@ return require('packer').startup(
   }
 
   -- Snippet Support
-  use "hrsh7th/vim-vsnip"
-  use "rafamadriz/friendly-snippets"
+  -- use "hrsh7th/vim-vsnip"
+  -- use "rafamadriz/friendly-snippets"
 
 
   -- Editing Helper Plugins
@@ -193,8 +193,9 @@ return require('packer').startup(
 	requires = 'kyazdani42/nvim-web-devicons'
   }
 
-  use { 'lukas-reineke/indent-blankline.nvim', branch = "lua",
-	config = function() require 'plugins/blankline' end
+  use { 'lukas-reineke/indent-blankline.nvim',
+    event = "BufReadPre",
+	config = function() require('plugins.blankline').config() end
   }
 
   -- Git Plugins
