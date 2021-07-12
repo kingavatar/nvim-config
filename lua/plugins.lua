@@ -19,7 +19,16 @@ return require('packer').startup(
 
   -- Startup Plugin
 
-  use { 'glepnir/dashboard-nvim', config = function() require 'plugins/dashboard' end }
+  use { 'glepnir/dashboard-nvim',
+      cmd = {
+        "Dashboard",
+        "DashboardNewFile",
+        "DashboardJumpMarks",
+        "SessionLoad",
+        "SessionSave"
+      },
+      config = function() require('plugins.dashboard').config() end
+  }
 
   -- color scheme
 
