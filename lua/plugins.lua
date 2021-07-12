@@ -106,6 +106,9 @@ return require('packer').startup(
       end,
   }
 
+
+  use { 'peterhoeg/vim-qml', ft = "qml"}
+
   -- Comment
 
   use { 'b3nj5m1n/kommentary',
