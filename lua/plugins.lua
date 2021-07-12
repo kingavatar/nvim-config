@@ -215,8 +215,9 @@ return require('packer').startup(
     config = function() require('plugins.gitsigns').config() end
   }
   use { 'TimUntersberger/neogit',
+    cmd = "Neogit",
 	config = function() require 'neogit'.setup {} end,
-	requires = 'nvim-lua/plenary.nvim' 
+	requires = 'nvim-lua/plenary.nvim'
   }
   use({
     "sindrets/diffview.nvim",
