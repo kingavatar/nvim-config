@@ -235,6 +235,25 @@ return require('packer').startup(
     end
   }
 
+  use { 'karb94/neoscroll.nvim',
+	keys = { "<C-u>", "<C-d>", "gg", "G" },
+    config = function() require('plugins.neoscroll') end
+  }
+  use({
+    "edluffy/specs.nvim",
+    after = "neoscroll.nvim",
+    config = function()
+      require("plugins.specs")
+    end,
+  })
+  use { "dstein64/nvim-scrollview",
+      event = "WinScrolled",
+      config = function() require("plugins.scrollbar") end
+  }
+
+  use({ "nvim-lua/plenary.nvim", module = "plenary" })
+  use({ "nvim-lua/popup.nvim", module = "popup" })
+
    -- load autosave only if its globally enabled
     use {
         "Pocco81/AutoSave.nvim",
@@ -253,9 +272,6 @@ return require('packer').startup(
 	  {'nvim-lua/plenary.nvim'},
 	}
   }
-  -- use { 'karb94/neoscroll.nvim',
-  --  config = function() require('neoscroll').setup() end
-  -- }
 
   end,
   {
