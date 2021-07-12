@@ -1,13 +1,13 @@
 require('lspsaga').init_lsp_saga {
-	use_saga_diagnostic_sign = true,
+	use_saga_diagnostic_sign = false,
 	error_sign = '✗',
-	warn_sign = '',
-	hint_sign = '',
-	infor_sign = '',
+	warn_sign = '',
+	hint_sign = '',
+	infor_sign = '',
 	dianostic_header_icon = '   ',
-	code_action_icon = ' ',
+	code_action_icon = ' ',
 	code_action_prompt = {
-	  enable = true,
+	  enable = false,
 	  sign = true,
 	  sign_priority = 20,
 	  virtual_text = true,
@@ -49,7 +49,7 @@ wk.register({
   ["gs"] = { require('lspsaga.signaturehelp').signature_help, "Lsp Saga Signature Help" },
   ["[e"] = { require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev, "Lsp Saga Jump Diagnostics Prev" },
   ["]e"] = { require'lspsaga.diagnostic'.lsp_jump_diagnostic_next, "Lsp Saga Jump Diagnostics Next" },
-  ["<A-d>"] = { require('lspsaga.floaterm').open_float_terminal, "Lsp Saga Float Terminal" }
+  ["<A-d>"] = { "<Cmd>lua require('lspsaga.floaterm').open_float_terminal('zsh')<CR>", "Lsp Saga Float Terminal" }
 },{ noremap = true, mode = "n", silent=true })
 
 wk.register({
@@ -62,8 +62,12 @@ wk.register({
 
 vim.cmd[[tnoremap <silent> <A-d> <C-\><C-n>:lua require('lspsaga.floaterm').close_float_terminal()<CR>]]
 
+
 vim.cmd "augroup Signature"
 vim.cmd "autocmd! * <buffer>"
 vim.cmd[[autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()]]
+vim.cmd[[au VimEnter * hi LspFloatWinNormal ctermfg=146 guifg=#a6accd guibg=#AB292d3e]]
+vim.cmd[[au VimEnter * hi LspSagaLightBulbSign ctermfg=37 guifg=#1abc9c]]
+vim.cmd[[au VimEnter * hi LspSagaLightBulb ctermfg=37 guifg=#1abc9c]]
 -- vim.cmd[[autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()]]
 vim.cmd "augroup end"

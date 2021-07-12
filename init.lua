@@ -9,15 +9,9 @@ cmd('syntax on')
 if vim.fn.has('vim_starting') then
   vim.g.mapleader = ","
   vim.g.maplocalleader = " "
-
-  -- Release keymappings prefixes, evict entirely for use of plug-ins.
-  cmd [[nnoremap <Space>  <Nop>]]
-  cmd [[xnoremap <Space>  <Nop>]]
-  -- cmd [[nnoremap ,        <Nop>]]
-  -- cmd [[xnoremap ,        <Nop>]]
-
-  cmd [[au VimEnter * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsoleVim]]
-  cmd [[au VimLeave * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsole]]
+  vim.g.auto_save = false
+  -- cmd [[au VimEnter * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsoleVim]]
+  -- cmd [[au VimLeave * :silent !qdbus $KONSOLE_DBUS_SERVICE $KONSOLE_DBUS_SESSION setProfile KingKonsole]]
 end
 
 
@@ -27,12 +21,4 @@ cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there 
 require("plugins")
 require("highlights")
 
--- hide line numbers , statusline in specific buffers!
-vim.api.nvim_exec(
-    [[
-   au BufEnter term://* setlocal nonumber
-   au BufEnter term://* set laststatus=0 
-]],
-    false
-)
 

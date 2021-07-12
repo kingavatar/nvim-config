@@ -42,15 +42,22 @@ return require('packer').startup(
      }
   }
 
-  use { 'neovim/nvim-lspconfig', config = function() require 'plugins/lspconfig' end,
+  use { 'kabouzeid/nvim-lspinstall'}
+
+  use { 'neovim/nvim-lspconfig',
+    event = "BufReadPre",
+    config = function() require('plugins.lsp') end,
+    wants = { "nvim-lsp-ts-utils", "null-ls.nvim", "lua-dev.nvim" },
 	requires = {
-	  { 'glepnir/lspsaga.nvim', config = function() require("plugins/lspsaga") end },
-	  { 'ray-x/lsp_signature.nvim', config = function() require("plugins/lspsign") end },
-	  { 'kabouzeid/nvim-lspinstall' }
+	  { 'glepnir/lspsaga.nvim', config = function() require("plugins.lspsaga") end },
+	  { 'ray-x/lsp_signature.nvim', config = function() require("plugins.lspsign") end },
+	  { 'nvim-lua/lsp-status.nvim', config = function () require('plugins.lspstatus') end },
+      "jose-elias-alvarez/nvim-lsp-ts-utils",
+      "jose-elias-alvarez/null-ls.nvim",
+      "folke/lua-dev.nvim",
 	}
   }
 
-  use { 'onsails/lspkind-nvim', config = function() require('lspkind').init() end }
 
   use { 'hrsh7th/nvim-compe',
      config = function() require 'plugins/comple' end,
@@ -96,14 +103,26 @@ return require('packer').startup(
 
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  use {
+  --[[ use {
 	'ojroques/nvim-lspfuzzy',
 	 requires = {
-		{'junegunn/fzf', run =function() vim.fn["fzf#install"]() end },
-		{'junegunn/fzf.vim', config = "require('plugins/fzf')"},  -- to enable preview (optional)
+		{'junegunn/fzf',
+		  run = function() vim.fn["fzf#install"]() end,
+		  cmd = "FZF",
+		  fn = {"fzf#run", "fzf#wrap"}
+		},
+		{'junegunn/fzf.vim',
+		  config = function() require('plugins.fzf').config() end,
+		  cmd = { "Files", "GFiles", "Buffers", "Colors",
+		     "Ag", "Rg", "Lines", "BLines", "Tags",
+             "BTags", "Marks", "Windows", "Locate", "History",
+             "Snippets", "Commits", "Commands",
+             "Maps", "Helptags", "Filetypes"
+		  }
+		},  -- to enable preview (optional)
 	 },
 	 config = function() require('lspfuzzy').setup {} end
-  }
+  } ]]
 
 
   -- Display Plugins
