@@ -199,7 +199,10 @@ return require('packer').startup(
 
   -- Miscellaneous
 
-  use { 'kdav5758/TrueZen.nvim', config = function() require 'plugins/truezen' end }
+  use { 'Pocco81/TrueZen.nvim',
+      cmd = {"TZAtaraxis", "TZMinimalist"},
+      config = function() require('plugins.truezen').config() end
+  }
 
   use { 'folke/which-key.nvim',
     module = "which-key",
