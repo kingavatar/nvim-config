@@ -98,7 +98,12 @@ return require('packer').startup(
   use { 'sbdchd/neoformat', cmd = "Neoformat" }
 
   use { 'RRethy/vim-illuminate', requires = {'neovim/nvim-lspconfig'},
-	  config = function () require('plugins/illuminate') end
+      -- config = function () require('plugins.illuminate') end
+      event = "CursorHold",
+      module = "illuminate",
+      config = function()
+          vim.g.Illuminate_delay = 1000
+      end,
   }
 
   -- Comment
