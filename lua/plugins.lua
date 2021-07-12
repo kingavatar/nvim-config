@@ -136,11 +136,16 @@ return require('packer').startup(
   }
   -- Fuzzy Finder, Picker etc
 
-  use {'nvim-telescope/telescope.nvim', config= function() require("plugins/telescope") end,
-	requires = {{'nvim-telescope/telescope-media-files.nvim'},{'nvim-lua/popup.nvim'}}
+  use {'nvim-telescope/telescope.nvim', config= function() require("plugins.telescope").config() end,
+    cmd = "Telescope",
+	requires = {
+	    {'nvim-telescope/telescope-media-files.nvim'},
+	    {'nvim-lua/popup.nvim'},
+	    {"nvim-lua/plenary.nvim"},
+        {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	  }
   }
 
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   --[[ use {
 	'ojroques/nvim-lspfuzzy',
