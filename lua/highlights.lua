@@ -81,11 +81,12 @@ fg("NvimTreeFolderName", blue)
 fg("NvimTreeIndentMarker", one_bg2)
 fg("NvimTreeVertSplit", darker_black)
 bg("NvimTreeVertSplit", darker_black)
+fg("NvimTreeEndOfBuffer", darker_black)
 
 fg("NvimTreeRootFolder", darker_black)
 bg("NvimTreeNormal", darker_black)
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-
+fg_bg("NvimTreeWindowPicker", red, black2)
 -- LspDiagnostics ---
 
 -- error / warnings
@@ -141,6 +142,12 @@ fg("DashboardHeader", grey_fg)
 fg("DashboardCenter", grey_fg)
 fg("DashboardShortcut", grey_fg)
 fg("DashboardFooter", grey_fg)
+
+-- Packer's floating window
+
+bg("NormalFloat", black2)
+bg("FloatBorder", black2)
+fg("FloatBorder", black2)
 
 -- Highlight on yank
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
