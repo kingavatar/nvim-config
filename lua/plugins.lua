@@ -131,6 +131,9 @@ return require('packer').startup(
 
   use {'famiu/bufdelete.nvim'}
 
+  use { 'simrat39/symbols-outline.nvim', config = function () require('plugins.symbols_outline').config() end,
+  	  cmd = {"SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose"}
+  }
   -- Fuzzy Finder, Picker etc
 
   use {'nvim-telescope/telescope.nvim', config= function() require("plugins/telescope") end,
