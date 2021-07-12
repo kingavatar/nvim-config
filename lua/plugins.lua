@@ -177,6 +177,10 @@ return require('packer').startup(
   }
 
   use { 'akinsho/nvim-bufferline.lua', config = function() require 'plugins/tabline' end,
+  use {'kyazdani42/nvim-web-devicons',
+      module = "nvim-web-devicons",
+      config = function() require('file-icons').config() end
+  }
 	requires = 'kyazdani42/nvim-web-devicons'
   }
 
