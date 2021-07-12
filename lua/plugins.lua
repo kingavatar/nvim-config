@@ -157,7 +157,12 @@ return require('packer').startup(
   use { 'kdav5758/TrueZen.nvim', config = function() require 'plugins/truezen' end }
 
   use { 'folke/which-key.nvim',
-   config = function() require("plugins/whichkey") end
+    module = "which-key",
+    event = "VimEnter",
+    config = function()
+        require("plugins.whichkey")
+        require("mappings").whichkeySetup()
+    end
   }
 
   use {

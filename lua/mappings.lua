@@ -32,30 +32,68 @@ end
 
 local opt = {}
 
+M.whichkeySetup = function ()
+
 local wk = require('which-key')
 
--- COPY EVERYTHING --
-map("i", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
-
--- TOGGLE NUMBERS --
--- map("n", "<leader>n", [[ <Cmd> set nu!<CR>]], opt)
--- map("n", "<leader>r", [[ <Cmd> set rnu!<CR>]], opt)
 wk.register({
   n = { "<Cmd> set nu!<CR>", "Set Line Number" },
   r = { "<Cmd> set rnu!<CR>", "Set Relative Line Number" },
-  z = { "<Cmd> TZAtaraxis<CR>", "Toggle Ataraxis Mode" },
-  m = { "<Cmd> TZMinimalist<CR>", "Toggle Minimalist Mode" },
   w = { "<Cmd> w<CR>", "Save" },
-  -- q = { "<Cmd> q<CR>", "Quit" } ,
-  t = {
-  	name="+toggle",
---	c = { "<Cmd> TSContextToggle<CR>", "Toggle TreeSitter Context" },
+  d = { "<Cmd> NvimTreeToggle<CR>", "Toggle NvimTree" },
+  ["<leader>"] = { ":update<CR>", "Save" },
+  q = { "<Cmd> q<CR>", "Quit" } ,
+  z = {
+  	name="+TrueZen",
 	z = { "<Cmd> TZAtaraxis<CR>", "Toggle Ataraxis Mode" },
 	m = { "<Cmd> TZMinimalist<CR>", "Toggle Minimalist Mode" },
+	f = { "<Cmd> TZFocus<CR>","Toggle Focus" }
+  },
+  h = {
+  	name="+gitsigns",
+  	s = {'<cmd>lua require"gitsigns".stage_hunk()<CR>', "Git Stage Hunk"},
+  	u = {'<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Git Unstage Hunk"},
+  	r = {'<cmd>lua require"gitsigns".reset_hunk()<CR>', "Git Reset Hunk"},
+  	R = {'<cmd>lua require"gitsigns".reset_buffer()<CR>', "Git Reset Buffer"},
+  	p = {'<cmd>lua require"gitsigns".preview_hunk()<CR>', "Git Preview Hunk"},
+  	b = {'<cmd>lua require"gitsigns".blame_line()<CR>', "Git Blame Line"},
+  },
+  f={
+  	  name="+file",
+  	  f = { '<Cmd> Telescope find_files<CR>', "Find Files"},
+	  o = { '<Cmd> Telescope oldfiles<CR>', "Open Recent Files"},
+	  p = { '<Cmd> Telescope media_files<CR>', "Open Media Files"},
+	  n = { '<Cmd> DashboardNewFile<CR>', "Open New File"},
+	  w = { '<Cmd> Telescope live_grep<CR>', "Live Grep"},
+	  m = { '<Cmd> Neoformat<CR>', "Format File"},
+	  j = { '<Cmd> DashboardJumpMarks<CR>', "Dashboard Jump Marks"},
+	  h = { '<Cmd> Telescope help_tags<CR>', "Open Help Tags"},
+	  b = { '<Cmd> Telescope buffers<CR>', "Open Buffers" }
+  },
+  s={
+  	  name="+session",
+  	  r={ '<Cmd> RestoreSession<CR>', "Restore Session"},
+  	  l={ '<Cmd> SearchSession<CR>', "Search Session"},
+  	  s={ '<Cmd> SaveSession<CR>', "Save Session"}
   }
-},{ prefix = "<leader>", noremap = true, mode = "n" })
 
+},{ prefix = "<leader>", noremap = true })
 
+wk.register({
+  -- l = { "<Cmd> noh<CR>", "Remove Highlighting" },
+  w = { "<Cmd> set list!<cr>", "Toggle Whitespace Rendering" },
+  s = { "<Cmd> SymbolsOutline<CR>", "Toggle SymbolsOutline Buffer" }
+},{prefix="<localleader>",noremap = true})
+
+wk.register({
+  ["<leader>h"]={
+  	name="+gitsigns",
+  	s={'<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Git Stage Hunk"},
+  	r={'<cmd>lua require"gitsigns".reset_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>', "Git Reset Hunk"},
+  }
+},{mode = "v", silent = true, noremap = true})
+
+end
 
 -- COPY EVERYTHING --
 M.map("i", "<C-a>", [[ <Cmd> %y+<CR>]], opt)
