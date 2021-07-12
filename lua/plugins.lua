@@ -104,7 +104,13 @@ return require('packer').startup(
 
   -- Comment
 
-  use { 'terrortylor/nvim-comment', config = function() require('nvim_comment').setup() end }
+  use { 'b3nj5m1n/kommentary',
+      opt = true,
+      wants = "nvim-ts-context-commentstring",
+      keys = { "gc", "gcc", "<C-_>" },
+      config = function() require('plugins.comments').config() end,
+      requires = {"JoosepAlviste/nvim-ts-context-commentstring", opt=true}
+  }
 
   -- Snippet Support
   use "hrsh7th/vim-vsnip"
