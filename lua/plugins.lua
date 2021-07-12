@@ -94,7 +94,8 @@ return require('packer').startup(
         "rafamadriz/friendly-snippets"
      }
   }
-  use { 'sbdchd/neoformat' }
+
+  use { 'sbdchd/neoformat', cmd = "Neoformat" }
 
   use { 'RRethy/vim-illuminate', requires = {'neovim/nvim-lspconfig'},
 	  config = function () require('plugins/illuminate') end
