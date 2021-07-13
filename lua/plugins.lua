@@ -161,6 +161,9 @@ return require('packer').startup(
   use { 'simrat39/symbols-outline.nvim', config = function () require('plugins.symbols_outline').config() end,
   	  cmd = {"SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose"}
   }
+
+  use { "mbbill/undotree", cmd = "UndotreeToggle" }
+
   -- Fuzzy Finder, Picker etc
 
   use {'nvim-telescope/telescope.nvim', config= function() require("plugins.telescope").config() end,
