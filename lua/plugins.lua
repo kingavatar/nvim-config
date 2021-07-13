@@ -305,6 +305,8 @@ return require('packer').startup(
 	}
   }
 
+  use {"tweekmonster/startuptime.vim", cmd = "StartupTime"}
+
   end,
   {
     display = {
