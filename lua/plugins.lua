@@ -43,9 +43,10 @@ return require('packer').startup(
   -- language plugins
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate',
-     config = function() require 'plugins/nvimtreesitter' end,
+     event = "BufRead",
+     config = function() require('plugins.nvimtreesitter').config() end,
      requires = {
-       {'p00f/nvim-ts-rainbow'}
+       {'p00f/nvim-ts-rainbow',event = "BufRead"}
      }
   }
 
