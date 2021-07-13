@@ -116,6 +116,10 @@ return require('packer').startup(
       end,
   }
 
+  use({
+    "andymass/vim-matchup",
+    event = "CursorMoved",
+  })
 
   use { 'peterhoeg/vim-qml', ft = "qml"}
 
