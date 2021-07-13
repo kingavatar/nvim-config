@@ -66,6 +66,15 @@ return require('packer').startup(
 	}
   }
 
+  use({
+    "folke/trouble.nvim",
+    event = "BufReadPre",
+    wants = "nvim-web-devicons",
+    cmd = { "TroubleToggle", "Trouble" },
+    config = function()
+      require("trouble").setup({ auto_open = false })
+    end,
+  })
 
   use { 'hrsh7th/nvim-compe',
     event = "InsertEnter",
