@@ -297,6 +297,7 @@ return require('packer').startup(
 
   use {
 	'sudormrfbin/cheatsheet.nvim',
+	cmd = { "Cheatsheet", "CheatsheetEdit" },
 	requires = {
 	  {'nvim-telescope/telescope.nvim'},
 	  {'nvim-lua/popup.nvim'},
