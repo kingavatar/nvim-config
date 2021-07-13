@@ -267,10 +267,10 @@ return require('packer').startup(
 
   use { 'folke/which-key.nvim',
     module = "which-key",
-    event = "VimEnter",
+    event = 'VimEnter',
     config = function()
         require("plugins.whichkey")
-        require("mappings").whichkeySetup()
+        vim.defer_fn(require("mappings").whichkeySetup,0)
     end
   }
 
