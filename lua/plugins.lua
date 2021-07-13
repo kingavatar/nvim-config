@@ -236,6 +236,15 @@ return require('packer').startup(
       config = function() require('plugins.truezen').config() end
   }
 
+  use({
+    "folke/todo-comments.nvim",
+    cmd = { "TodoTrouble", "TodoTelescope" },
+    event = "BufReadPost",
+    config = function()
+      require("plugins.todo")
+    end,
+  })
+
   use { 'folke/which-key.nvim',
     module = "which-key",
     event = "VimEnter",
