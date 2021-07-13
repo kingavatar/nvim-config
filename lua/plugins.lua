@@ -271,6 +271,8 @@ return require('packer').startup(
     end
   }
 
+  use({ "npxbr/glow.nvim", cmd = "Glow" })
+
   use { 'karb94/neoscroll.nvim',
 	keys = { "<C-u>", "<C-d>", "gg", "G" },
     config = function() require('plugins.neoscroll') end
