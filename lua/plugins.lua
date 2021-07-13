@@ -50,7 +50,10 @@ return require('packer').startup(
      }
   }
 
-  use { 'kabouzeid/nvim-lspinstall'}
+  use { 'kabouzeid/nvim-lspinstall',
+      cmd = { "LspInstall", "LspUninstall" },
+      module = "lspinstall"
+  }
 
   use { 'neovim/nvim-lspconfig',
     event = "BufReadPre",
