@@ -341,7 +341,10 @@ return require('packer').startup(
         open_fn = function()
 		  return require('packer.util').float({ border = 'single' })
 		end,
-        border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
+        -- border = {"┌", "─", "┐", "│", "┘", "─", "└", "│"}
+    },
+    git = {
+      clone_timeout = 600, -- Timeout, in seconds, for git clones
     }
   }
 )
