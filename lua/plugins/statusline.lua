@@ -11,6 +11,8 @@ colors.statusline_bg = colors.bg_statusline
 colors.lightbg = colors.fg_gutter
 colors.nord_blue = colors.blue
 colors.lightbg2 = colors.bg
+colors.white = require "themes/onedark".white
+colors.grey_fg2 = require "themes/onedark".grey_fg2
 
 gls.left[1] = {
   FirstElement = {
@@ -146,8 +148,8 @@ gls.right[2] = {
         provider = function()
             return " "
         end,
-        condition = require("galaxyline.condition").check_git_workspace,
-        highlight = {colors.grey_fg2, colors.lightbg},
+        -- condition = require("galaxyline.condition").check_git_workspace,
+        highlight = {colors.orange, colors.lightbg},
         separator = "",
         separator_highlight = {colors.lightbg, colors.statusline_bg}
     }
@@ -156,8 +158,9 @@ gls.right[2] = {
 gls.right[3] = {
     GitBranch = {
         provider = "GitBranch",
+        icon = " ",
         condition = require("galaxyline.condition").check_git_workspace,
-        highlight = {colors.grey_fg2, colors.lightbg}
+        highlight = {colors.orange, colors.lightbg},
     }
 }
 
