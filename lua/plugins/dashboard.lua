@@ -41,6 +41,8 @@ M.config = function ()
       "kingavatar (Saikiran Reddy) Loaded " .. plugins_count .. " plugins"
   }
 
+  vim.cmd([[autocmd FileType dashboard nnoremap <buffer><silent> q :q<CR>]])
+
 end
 
 return M
