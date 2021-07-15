@@ -15,7 +15,7 @@ if vim.fn.has('vim_starting') then
 end
 
 
-cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+cmd 'autocmd BufWritePost plugins/init.lua PackerCompile' -- Auto compile when there are changes in plugins/init.lua
 
 require("mappings")
 require("general")

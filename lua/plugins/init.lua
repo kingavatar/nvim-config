@@ -1,7 +1,7 @@
 local cmd = vim.cmd
 local fn = vim.fn
 
-local install_path = vim.fn.expand(vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim')
+local install_path = vim.fn.expand(vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim')
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
@@ -15,18 +15,18 @@ return require('packer').startup(
 
   -- Packer can manage itself
 
-  use {'wbthomason/packer.nvim'}
+  use {'wbthomason/packer.nvim', opt = true}
 
   -- Startup Plugin
 
   use { 'glepnir/dashboard-nvim',
-      cmd = {
+      --[[ cmd = {
         "Dashboard",
         "DashboardNewFile",
         "DashboardJumpMarks",
         "SessionLoad",
         "SessionSave"
-      },
+      }, ]]
       config = function() require('plugins.dashboard').config() end
   }
 
@@ -48,6 +48,11 @@ return require('packer').startup(
      requires = {
        {'p00f/nvim-ts-rainbow',event = "BufRead"}
      }
+  }
+
+  use { 'code-biscuits/nvim-biscuits',
+      after = 'nvim-treesitter',
+      config = function () require("plugins.biscuits") end
   }
 
   use { 'kabouzeid/nvim-lspinstall',
@@ -84,19 +89,19 @@ return require('packer').startup(
      config = function() require('plugins.comple').config() end,
      wants = {"LuaSnip"},
      requires={
-     	{'windwp/nvim-autopairs',
-     	  after = "nvim-compe",
-     	  config = function()
-            require("nvim-autopairs").setup()
-     	    require("nvim-autopairs.completion.compe").setup(
+        {'windwp/nvim-autopairs',
+            after = "nvim-compe",
+            config = function()
+                require("nvim-autopairs").setup()
+                require("nvim-autopairs.completion.compe").setup(
                     {
                         map_cr = true,
                         map_complete = true -- insert () func completion
                     }
-            )
-     	  end
-     	},
-     	{
+                )
+            end
+        },
+        {
           "L3MON4D3/LuaSnip",
           wants = "friendly-snippets",
           event = "InsertCharPre",
@@ -123,8 +128,6 @@ return require('packer').startup(
     "andymass/vim-matchup",
     event = "CursorMoved",
   })
-
-  use { 'peterhoeg/vim-qml', ft = "qml"}
 
   -- Comment
 
@@ -159,10 +162,12 @@ return require('packer').startup(
   --   requires = {'kyazdani42/nvim-web-devicons'}
   -- }
 
-  use {'famiu/bufdelete.nvim'}
+  use {'famiu/bufdelete.nvim',
+      cmd = {"Bdelete","Bwipeout"},
+  }
 
   use { 'simrat39/symbols-outline.nvim', config = function () require('plugins.symbols_outline').config() end,
-  	  cmd = {"SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose"}
+      cmd = {"SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose"}
   }
 
   use { "mbbill/undotree", cmd = "UndotreeToggle" }
@@ -230,8 +235,8 @@ return require('packer').startup(
   -- Git Plugins
 
   use {
-  	'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
-  	event = "BufReadPre",
+    'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' },
+    event = "BufReadPre",
     config = function() require('plugins.gitsigns').config() end
   }
   use { 'TimUntersberger/neogit',
