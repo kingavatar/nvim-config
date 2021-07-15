@@ -5,7 +5,8 @@ M.config = function()
   local ts_config = require("nvim-treesitter.configs")
 
   ts_config.setup {
-      ensure_installed = {
+      ensure_installed = "all"
+      --[[ {
           "javascript",
           "html",
           "css",
@@ -29,7 +30,8 @@ M.config = function()
           "typescript",
           "vue",
           "yaml"
-      },
+      } ]]
+      ,
       ignore_install = { "haskell" },
       highlight = {
           enable = true,
