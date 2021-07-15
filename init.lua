@@ -20,5 +20,6 @@ cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there 
 require("mappings")
 require("general")
 vim.defer_fn(function () require("plugins") end, 0)
+vim.defer_fn(function () require("misc") end, 0)
 -- require("highlights")  -- Tokyonight ColorScheme Provides all necessarry highlights
 
